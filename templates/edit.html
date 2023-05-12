@@ -1,0 +1,20 @@
+{% extends 'bootstrap/base.html' %}  <!-- extend the base bootstrap template -->
+
+{% import "bootstrap/wtf.html" as wtf %}  <!-- import the wtf forms from bootstrap -->
+
+{% block styles %}  <!-- define the styles block -->
+  {{ super() }}  <!-- include the styles from the parent template -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">  <!-- link to Google fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">  <!-- link to a custom CSS file -->
+{% endblock %}
+
+{% block title %}Edit Movies{% endblock %}  <!-- set the page title -->
+
+{% block content %}  <!-- define the content block -->
+<div class="content">
+  <h1 class="heading">{{movie.title}}</h1>  <!-- display the movie title -->
+    <p class="description">Edit Movie Rating</p>  <!-- display a description of the edit form -->
+        {{ wtf.quick_form(form, novalidate=True) }}  <!-- display the edit form using wtf.quick_form -->
+  </div>
+{% endblock %}  <!-- end of content block -->
